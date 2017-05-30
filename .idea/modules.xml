@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/OSS_SUN.iml" filepath="$PROJECT_DIR$/OSS_SUN.iml" />
       <module fileurl="file://$PROJECT_DIR$/Thinketch.iml" filepath="$PROJECT_DIR$/Thinketch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
