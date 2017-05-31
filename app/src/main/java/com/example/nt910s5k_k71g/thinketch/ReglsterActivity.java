@@ -18,7 +18,6 @@ public class ReglsterActivity extends AppCompatActivity {
 
         EditText idText = (EditText) findViewById(R.id.idText);
         EditText pwText = (EditText) findViewById(R.id.pwText);
-        EditText  nameText = (EditText) findViewById(R.id.nameText);
         Button regbutton = (Button) findViewById(R.id.regbutton);
         Button button1 = (Button) findViewById(R.id.button1);
 

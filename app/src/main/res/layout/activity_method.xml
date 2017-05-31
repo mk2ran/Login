@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android ="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:weightSum="1">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="그림을 그리는 사람"
+        android:textSize="45sp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.40"
+        android:text="그림을 제출하는 창으로 이동되서 그림을 그리시면 됩니다."
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="그림을 푸는 사람"
+        android:textSize="45sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.46"
+        android:text="다른 사람이 그린 그림들을 보고 그에 따른 주제를 입력하시면 됩니다."
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/backbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="돌아가기" />
+</LinearLayout>

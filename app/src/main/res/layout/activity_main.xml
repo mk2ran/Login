@@ -3,6 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="50dp"
+    android:background = "@drawable/re"
     >
 
 
@@ -31,7 +33,9 @@
         android:layout_height="155dp"
         android:layout_weight="0.49"
         android:orientation="horizontal"
-        android:weightSum="1">
+        android:weightSum="1"
+
+        >
 
         <Button
             android:id="@+id/logbutton"
@@ -39,6 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.77"
             android:text="로그인"
+            android:gravity="center"
+            android:background="@mipmap/ic_launcher"
+            android:drawableTop="@mipmap/ic_launcher"
 
             />
 
@@ -47,7 +54,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.09"
-            android:text="회원가입" />
+            android:text="회원가입"
+            android:background="@drawable/re"
+            android:drawableTop="@drawable/re"
+            />
 
     </LinearLayout>
 </LinearLayout>

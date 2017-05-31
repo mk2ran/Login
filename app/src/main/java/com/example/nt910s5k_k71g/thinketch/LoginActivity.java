@@ -28,6 +28,13 @@ public class LoginActivity extends AppCompatActivity {
                 LoginActivity.this.startActivity(outIntent);
             }
         });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent metIntent = new Intent(LoginActivity.this, MethodActivity.class);
+                LoginActivity.this.startActivity(metIntent);
+            }
+        });
 
 
     }

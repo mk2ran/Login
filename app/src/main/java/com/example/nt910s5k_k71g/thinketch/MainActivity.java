@@ -28,6 +28,14 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(loginIntent);
             }
         });
+        regbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regIntent = new Intent(MainActivity.this, ReglsterActivity.class);
+                MainActivity.this.startActivity(regIntent);
+            }
+        });
+
 
     }
 }

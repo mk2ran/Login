@@ -26,15 +26,6 @@
         android:maxLength="12"
         android:password="true" />
 
-    <EditText
-        android:id="@+id/nameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="닉네임(영어만)"
-        android:inputType="textPersonName"
-        android:maxLength="5" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
