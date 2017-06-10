@@ -1,0 +1,115 @@
+package com.example.nt910s5k_k71g.yoygame;
+
+/**
+ * Created by NT910S5K-K71G on 2017-06-10.
+ */
+
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.support.v7.app.AppCompatActivity;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
+import android.os.Bundle;
+import java.util.ArrayList;
+import static android.R.attr.path;
+
+public class MyView extends View {
+    ArrayList<Point> list;
+
+    static final int BLACK_STATE = 0;
+    static final int WHITE_STATE = 1;
+    static final int RED_STATE = 2;
+    static final int BLUE_STATE = 3;
+    static final int YELLOW_STATE = 4;
+    static final int GREEN_STATE = 5;
+
+    int colorState = BLACK_STATE;
+    Paint[] paintList = new Paint[6];
+
+    public MyView(Context context) {
+        super(context);
+        init();
+    }
+
+    public MyView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    public void init() {
+        list = new ArrayList<Point>();
+        Paint blackPaint = new Paint();
+        blackPaint.setColor(Color.BLACK);
+        blackPaint.setStrokeWidth(5); //선 굵기
+        blackPaint.setAntiAlias(true); //부드럽게 된다는 소스
+
+        Paint whitePaint = new Paint();
+        whitePaint.setColor(Color.WHITE);
+        whitePaint.setStrokeWidth(20); //선 굵기
+        whitePaint.setAntiAlias(true); //부드럽게 된다는 소스
+
+        Paint redPaint = new Paint();
+        redPaint.setColor(Color.RED);
+        redPaint.setStrokeWidth(5); //선 굵기
+        redPaint.setAntiAlias(true); //부드럽게 된다는 소스
+
+        Paint bluePaint = new Paint();
+        bluePaint.setColor(Color.BLUE);
+        bluePaint.setStrokeWidth(5); //선 굵기
+        bluePaint.setAntiAlias(true); //부드럽게 된다는 소스
+
+        Paint yellowPaint = new Paint();
+        yellowPaint.setColor(Color.YELLOW);
+        yellowPaint.setStrokeWidth(5); //선 굵기
+        yellowPaint.setAntiAlias(true); //부드럽게 된다는 소스
+
+        Paint greenPaint = new Paint();
+        greenPaint.setColor(Color.GREEN);
+        greenPaint.setStrokeWidth(5); //선 굵기
+        greenPaint.setAntiAlias(true); //부드럽게 된다는 소스
+
+
+        paintList[0] = blackPaint;
+        paintList[1] = whitePaint;
+        paintList[2] = redPaint;
+        paintList[3] = bluePaint;
+        paintList[4] = yellowPaint;
+        paintList[5] = greenPaint;
+    }
+    protected void onDraw(Canvas canvas) {
+        canvas.drawColor(Color.WHITE);
+        for (int i = 0; i < list.size(); i++) {
+            Point p = list.get(i);
+            if (!(p.isStart)) {
+                canvas.drawLine(list.get(i - 1).x,
+                        list.get(i - 1).y,
+                        list.get(i).x,
+                        list.get(i).y,
+                        paintList[list.get(i).colorState]);
+            }
+        }
+    }
+    public boolean onTouchEvent(MotionEvent event) {
+        int eventX = (int) event.getX();
+        int eventY = (int) event.getY();
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                Point p = new Point(eventX, eventY, true, colorState);
+                list.add(p);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                Point p2 = new Point(eventX, eventY, false, colorState);
+                list.add(p2);
+                invalidate();
+                break;
+        }
+        return true;
+    }
+}
+===================================================================
