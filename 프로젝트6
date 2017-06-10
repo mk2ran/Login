@@ -113,3 +113,34 @@ public class MyView extends View {
     }
 }
 ===================================================================
+package com.example.nt910s5k_k71g.yoygame;
+import java.io.Serializable;
+/**
+ * Created by NT910S5K-K71G on 2017-06-10.
+ */
+
+
+public class Point implements Serializable {
+
+    int x, y;
+    boolean isStart = false;
+    int colorState;
+
+    public Point( int x, int y, boolean isStart)
+    {
+        this.x = x;
+        this.y = y;
+        this.isStart = isStart;
+    }
+    public Point( int x, int y, boolean isStart, int colorState)
+    {
+        this.x = x;
+        this.y = y;
+        this.isStart = isStart;
+        this.colorState = colorState;
+    }
+
+}
+
+=========값 가져오기(위)============================
+
