@@ -1,0 +1,203 @@
+package com.example.nt910s5k_k71g.yoygame;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
+import static android.R.color.black;
+
+public class PictureActivity extends AppCompatActivity {
+    MyView myviews;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_picture);
+        Button endbut, savebut;
+        Bitmap bm;
+        savebut = (Button)findViewById(R.id.savebut);
+        endbut = (Button) findViewById(R.id.End_but);
+        myviews = (MyView) findViewById(R.id.myView);
+        endbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(PictureActivity.this, LoginActivity.class);
+                PictureActivity.this.startActivity(loginIntent);
+            }
+        });
+        /*
+        savebut.setOnClickListener(new View.OnClickListener() {
+            File file = new File("test.png");
+            OutputStream outputStream = null;
+            @Override
+            public void onClick(View v) {
+                try{
+                    file.createNewFile();
+                    outputStream = new FileOutputStream(file);
+
+
+
+
+                }
+            }
+        });
+*/
+    }
+    public void changeColor(View v) {
+        Button black, white,red,blue,yellow,green;
+        black = (Button) findViewById(R.id.Black);
+        white = (Button) findViewById(R.id.white);
+        red = (Button) findViewById(R.id.red_but);
+        blue = (Button) findViewById(R.id.blue_but);
+        yellow = (Button) findViewById(R.id.Yll_but);
+        green = (Button) findViewById(R.id.green_but);
+        black.setTextColor(Color.BLACK);
+        white.setTextColor(Color.BLACK);
+        red.setTextColor(Color.BLACK);
+        blue.setTextColor(Color.BLACK);
+        yellow.setTextColor(Color.BLACK);
+        green.setTextColor(Color.BLACK);
+
+        switch (v.getId()) {
+            case R.id.Black:
+                myviews.colorState = MyView.BLACK_STATE;
+                black.setTextColor(Color.BLACK);
+                break;
+            case R.id.white:
+                myviews.colorState = MyView.WHITE_STATE;
+                white.setTextColor(Color.WHITE);
+                break;
+            case R.id.red_but:
+                myviews.colorState = MyView.RED_STATE;
+                red.setTextColor(Color.WHITE);
+                break;
+            case R.id.blue_but:
+                myviews.colorState = MyView.BLUE_STATE;
+                blue.setTextColor(Color.WHITE);
+                break;
+            case R.id.Yll_but:
+                myviews.colorState = MyView.YELLOW_STATE;
+                yellow.setTextColor(Color.WHITE);
+                break;
+            case R.id.green_but:
+                myviews.colorState = MyView.GREEN_STATE;
+                green.setTextColor(Color.WHITE);
+                break;
+        }
+    }
+}
+=======================================================================================
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android ="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/Black"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="changeColor"
+            android:text="@string/검정"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/white"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="changeColor"
+            android:text="@string/지우개"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/savebut"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/제출"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/End_but"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/나가기"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+
+    </LinearLayout>
+    <com.example.nt910s5k_k71g.yoygame.MyView
+        android:layout_height="414dp"
+        android:id="@+id/myView"
+        android:layout_width="fill_parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/red_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.19"
+            android:onClick="changeColor"
+            android:text="@string/빨강"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/blue_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.21"
+            android:onClick="changeColor"
+            android:text="@string/파랑"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/Yll_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.19"
+            android:onClick="changeColor"
+            android:text="@string/노랑"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+
+        <Button
+            android:id="@+id/green_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.16"
+            android:onClick="changeColor"
+            android:text="@string/초록"
+            android:textSize="20sp"
+            tools:ignore="ButtonStyle" />
+    </LinearLayout>
+
+</LinearLayout>
