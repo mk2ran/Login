@@ -1,0 +1,131 @@
+public class MainActivity extends Activity{
+
+	private static final int PICK_FROM_CAMERA = 0;
+
+	  private static final int PICK_FROM_ALBUM = 1;
+
+	  private static final int CROP_FROM_CAMERA = 2;
+
+	 
+
+	  private static final String TEMP_FILE_NAME = "tempFile.jpg";
+
+	  private static final String TYPE_IMAGE = "image/*";
+
+	  private Uri mImageCaptureUri;
+
+	  private Uri mTempImageUri;
+
+	  
+
+	  private ImageView mPhotoImageView;
+
+	  private Button mButton;
+
+	@Override
+
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_main);
+
+		Btn_Find.setOnTouchListener(new OnTouchListener() {
+
+         @Override
+         public boolean onTouch(View v, MotionEvent event) {
+
+            if(event.getAction() == event.ACTION_DOWN){
+//                Intent intent = new Intent(Intent.ACTION_PICK);
+//                intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
+//                intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(intent, REQ_CODE_SELECT_IMAGE);
+
+               mTempImageUri = Uri.fromFile( getTempFile() );
+
+               Intent intent = new Intent(Intent.ACTION_GET_CONTENT, null);
+               intent.setType( TYPE_IMAGE );    //갤러리 이미지를 불러옵니다
+
+               intent.putExtra("noFaceDetection",true); //
+               intent.putExtra( "crop", "true" );
+
+
+               intent.putExtra("scale", true);
+
+
+               intent.putExtra( MediaStore.EXTRA_OUTPUT, mTempImageUri );
+               intent.putExtra( "outputFormat", Bitmap.CompressFormat.JPEG.toString() );
+               startActivityForResult(intent, CROP_FROM_CAMERA);
+
+            }
+            if(event.getAction() == event.ACTION_UP){
+
+            }
+            return false;
+         }
+      });
+
+	}
+
+
+
+	 private File getTempFile(){
+
+   File file = new File( Environment.getExternalStorageDirectory(), TEMP_FILE_NAME );
+   try{
+      file.createNewFile();
+   }
+   catch( Exception e ){
+      Log.e("cklee", "fileCreation fail" );
+   }
+   return file;
+}
+
+
+
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+
+
+if(resultCode != RESULT_OK)
+
+
+
+{        return;
+
+     }
+
+      switch(requestCode)
+      {
+         case CROP_FROM_CAMERA:
+         {
+//            // 크롭이 된 이후의 이미지를 넘겨 받습니다.
+//            // 이미지뷰에 이미지를 보여준다거나 부가적인 작업 이후에
+//            // 임시 파일을 삭제합니다.
+
+            tempFile = getTempFile();
+            if ( tempFile.exists() )
+            {
+   
+//                Drawable d =new BitmapDrawable(BitmapFactory.decodeFile( tempFile.toString()));  //비트맵으로 받은 것을 레이아웃 백그라운드로 설정!!!!
+//            wifi.MouseActivity.wifimain.setBackgroundDrawable(d);
+
+               finish();
+            }
+
+
+            break;
+         }
+
+      }
+   }
+   @Override
+   protected void onStop() {
+      super.onStop();
+
+   }
+}
+
+
