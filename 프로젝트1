@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             android:text="회원가입"
             android:background="@drawable/re"
             android:drawableTop="@drawable/re"
-            />
+            />;
 
     </LinearLayout>
 </LinearLayout>
